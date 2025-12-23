@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Azure Dreams Battle
+
+A retro-themed two-player monster battle game inspired by Azure Dreams. Players take turns drawing random monsters, and the player with the stronger monster wins each round. First to win the most rounds out of 10 wins the game!
+
+## Features
+
+- 🎮 Two-player battle system
+- 🎲 Random monster drawing
+- 🏆 10 rounds of gameplay
+- 📊 Power level-based combat
+- 🎨 Retro-themed modern UI
+- 📱 Mobile-first responsive design
+
+## Tech Stack
+
+- **Framework:** Next.js 15+ (App Router)
+- **Language:** TypeScript (Strict mode)
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide React
 
 ## Getting Started
 
-First, run the development server:
-
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How to Play
 
-## Learn More
+1. Each player clicks "Draw Monster" to get a random monster
+2. Once both players have drawn, the game compares power levels
+3. The player with the higher power level wins the round
+4. If there's a tie, both monsters are re-drawn automatically
+5. After 10 rounds, the player with the most wins is declared the champion!
 
-To learn more about Next.js, take a look at the following resources:
+## Monster Ranks
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Monsters are ranked by power level:
+- **Rank E:** Power 1-20 (Basic monsters)
+- **Rank D:** Power 21-40 (Common monsters)
+- **Rank C:** Power 41-60 (Uncommon monsters)
+- **Rank B:** Power 61-80 (Rare monsters)
+- **Rank A:** Power 81-95 (Epic monsters)
+- **Rank S:** Power 96-100 (Legendary monsters)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+azure-dreams-battle/
+├── app/
+│   ├── components/
+│   │   ├── GameBoard.tsx      # Main game logic
+│   │   ├── PlayerCard.tsx      # Player UI component
+│   │   ├── MonsterCard.tsx     # Monster display component
+│   │   ├── MonsterImage.tsx    # Monster image with fallback
+│   │   └── ui/
+│   │       └── button.tsx      # Reusable button component
+│   ├── data/
+│   │   └── monsters.ts         # Monster data and utilities
+│   ├── types.ts                # TypeScript type definitions
+│   ├── layout.tsx              # Root layout
+│   └── page.tsx                # Home page
+├── lib/
+│   └── utils.ts                # Utility functions (cn helper)
+└── public/
+    └── monsters/               # Monster images (add your own!)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Adding Monster Images
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Place monster images in `public/monsters/` with filenames matching the monster IDs (e.g., `slime.png`, `dragon.png`). The app will automatically use placeholder SVGs if images are not found.
+
+## License
+
+MIT
